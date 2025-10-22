@@ -1,4 +1,5 @@
-console.log("Rock.");
+let userScore = 0;
+let computerScore = 0;
 
 function getComputerChoice(){
     number = Math.floor(Math.random() * 3) + 1;
@@ -15,12 +16,15 @@ function playGame(choice) {
     let computerChoice = getComputerChoice();
     winner = decideWinner(choice, computerChoice);
     if(winner === 0){
-        console.log("Its a tie!");
+        alert("Its a tie!");
     } else if(winner === 1){
-        console.log("Computer Wins. " + computerChoice + " beats " + choice + ".");
+        alert("Computer Wins. " + computerChoice + " beats " + choice + ".");
+        computerScore++;
     } else {
-        console.log("You win! " + choice + " beats " + computerChoice + ".");
+        alert("You win! " + choice + " beats " + computerChoice + ".");
+        userScore++;
     }
+    console.log("Computer: "+ computerScore + ". User: " + userScore);
 }
 
 function decideWinner(userChoice, computerChoice){
@@ -56,4 +60,9 @@ document.getElementById("paper").addEventListener("click", function(){
 
 document.getElementById("scissors").addEventListener("click", function(){
     playGame("scissors");
+});
+
+document.getElementById("reset-score").addEventListener("click", function(){
+    userScore = 0;
+    computerScore = 0;
 });
