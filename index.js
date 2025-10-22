@@ -11,19 +11,49 @@ function getComputerChoice(){
     return "scissors";
 }
 
-function getUserChoice(choice) {
+function playGame(choice) {
     let computerChoice = getComputerChoice();
-    console.log("User: " + choice + "; Computer: " + computerChoice);
+    winner = decideWinner(choice, computerChoice);
+    if(winner === 0){
+        console.log("Its a tie!");
+    } else if(winner === 1){
+        console.log("Computer Wins. " + computerChoice + " beats " + choice + ".");
+    } else {
+        console.log("You win! " + choice + " beats " + computerChoice + ".");
+    }
+}
+
+function decideWinner(userChoice, computerChoice){
+    if(userChoice === computerChoice){
+        return 0;
+    }
+    if(userChoice === "rock" && computerChoice === "paper"){
+        return 1;
+    }
+    if(userChoice === "rock" && computerChoice === "scissors"){
+        return 2;
+    }
+    if(userChoice === "scissors" && computerChoice === "rock"){
+        return 1;
+    }
+    if(userChoice === "scissors" && computerChoice === "paper"){
+        return 2;
+    }
+    if(userChoice === "paper" && computerChoice === "scissors"){
+        return 1;
+    }
+    return 2;
+
 }
 
 document.getElementById("rock").addEventListener("click", function() {
-    getUserChoice("rock");
+    playGame("rock");
 });
 
 document.getElementById("paper").addEventListener("click", function(){
-    getUserChoice("paper");
+    playGame("paper");
 });
 
 document.getElementById("scissors").addEventListener("click", function(){
-    getUserChoice("scissors");
+    playGame("scissors");
 });
