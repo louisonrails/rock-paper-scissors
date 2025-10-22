@@ -11,3 +11,19 @@ function getComputerChoice(){
     return "scissors";
 }
 
+function getUserChoice(choice) {
+    let computerChoice = getComputerChoice();
+    console.log("User: " + choice + "; Computer: " + computerChoice);
+}
+
+document.getElementById("rock").addEventListener("click", function() {
+    getUserChoice("rock");
+});
+
+document.getElementById("paper").addEventListener("click", function(){
+    getUserChoice("paper");
+});
+
+document.getElementById("scissors").addEventListener("click", function(){
+    getUserChoice("scissors");
+});
