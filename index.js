@@ -24,7 +24,7 @@ function playGame(choice) {
         alert("You win! " + choice + " beats " + computerChoice + ".");
         userScore++;
     }
-    console.log("Computer: "+ computerScore + ". User: " + userScore);
+    updateScore(userScore, computerScore);
 }
 
 function decideWinner(userChoice, computerChoice){
@@ -50,6 +50,15 @@ function decideWinner(userChoice, computerChoice){
 
 }
 
+function updateScore(userScore, computerScore){
+
+    const userScoreElement = document.getElementById("user-score");
+    const computerScoreElement = document.getElementById("computer-score");
+
+    userScoreElement.textContent = userScore;
+    computerScoreElement.textContent = computerScore;
+}
+
 document.getElementById("rock").addEventListener("click", function() {
     playGame("rock");
 });
@@ -65,4 +74,6 @@ document.getElementById("scissors").addEventListener("click", function(){
 document.getElementById("reset-score").addEventListener("click", function(){
     userScore = 0;
     computerScore = 0;
+
+    updateScore(userScore, computerScore);
 });
