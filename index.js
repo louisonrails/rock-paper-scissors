@@ -16,7 +16,7 @@ function playGame(choice) {
     let computerChoice = getComputerChoice();
     winner = decideWinner(choice, computerChoice);
     if(winner === 0){
-        alert("Its a tie!");
+        userFeedback('tie', computerChoice, choice);
     } else if(winner === 1){
         userFeedback('Computer', computerChoice, choice);
         computerScore++;
@@ -28,7 +28,25 @@ function playGame(choice) {
 }
 
 function userFeedback(winner, winnerChoice, loserChoice){
-    alert(winner + " Won. " + winnerChoice + " beats " + loserChoice + ".");
+    // alert(winner + " Won. " + winnerChoice + " beats " + loserChoice + ".");
+    const feedbackSection = document.querySelector(".feedback");
+    feedbackSection.innerHTML = "";
+
+    const feedbackText = document.createElement("p");
+
+    console.log(winner);
+    
+    if(winner === "tie"){
+        feedbackText.textContent = "It's a tie.";
+    } else {
+        feedbackSection.textContent = winner + " Won! " + winnerChoice + " beats " + loserChoice + ".";
+    }
+
+    feedbackSection.appendChild(feedbackText);
+
+    setTimeout(() => {
+        feedbackSection.innerHTML = "";
+    }, 1500);
 }
 
 function decideWinner(userChoice, computerChoice){
