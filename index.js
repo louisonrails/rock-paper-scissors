@@ -18,13 +18,17 @@ function playGame(choice) {
     if(winner === 0){
         alert("Its a tie!");
     } else if(winner === 1){
-        alert("Computer Wins. " + computerChoice + " beats " + choice + ".");
+        userFeedback('Computer', computerChoice, choice);
         computerScore++;
     } else {
-        alert("You win! " + choice + " beats " + computerChoice + ".");
+        userFeedback('You', choice, computerChoice);
         userScore++;
     }
     updateScore(userScore, computerScore);
+}
+
+function userFeedback(winner, winnerChoice, loserChoice){
+    alert(winner + " Won. " + winnerChoice + " beats " + loserChoice + ".");
 }
 
 function decideWinner(userChoice, computerChoice){
