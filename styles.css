@@ -68,7 +68,7 @@ body {
 }
 
 /* Score Section */
-.score {
+.score, .feedback {
     display: flex;
     gap: 30px;
     justify-content: center;

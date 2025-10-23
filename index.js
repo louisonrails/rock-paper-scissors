@@ -29,7 +29,7 @@ function playGame(choice) {
 
 function userFeedback(winner, winnerChoice, loserChoice){
     // alert(winner + " Won. " + winnerChoice + " beats " + loserChoice + ".");
-    const feedbackSection = document.querySelector(".feedback");
+    const feedbackSection = document.querySelector("#feedback");
     feedbackSection.innerHTML = "";
 
     const feedbackText = document.createElement("p");
@@ -42,9 +42,11 @@ function userFeedback(winner, winnerChoice, loserChoice){
         feedbackSection.textContent = winner + " Won! " + winnerChoice + " beats " + loserChoice + ".";
     }
 
+    feedbackSection.classList.add("feedback");
     feedbackSection.appendChild(feedbackText);
 
     setTimeout(() => {
+        feedbackSection.classList.remove("feedback");
         feedbackSection.innerHTML = "";
     }, 1500);
 }
